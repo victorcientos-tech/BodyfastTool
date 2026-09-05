@@ -1,0 +1,1 @@
+Déployer tous les fichiers à la racine du dépôt GitHub Pages en conservant le dossier icons. Exporter le JSON avant la mise à jour. La clé jf_imc_complete_v1 est conservée.

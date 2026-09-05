@@ -1,0 +1,25 @@
+{
+  "name": "Body Fasting",
+  "short_name": "Body Fasting",
+  "description": "Suivi local du jeûne, de l’activité, du poids et du tour de taille.",
+  "lang": "fr-FR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#171b26",
+  "theme_color": "#171b26",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
