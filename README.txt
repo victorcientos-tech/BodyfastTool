@@ -1,16 +1,17 @@
-BODY FASTING V3.5 - DEPLOIEMENT GITHUB PAGES
+BODY FASTING PWA V3.6 UX
 
-1. Copiez tous les fichiers du package a la racine du depot.
-2. Conservez le dossier icons existant avec icon-192.png et icon-512.png.
-3. Supprimez l'ancien fichier pdf.min.js : il n'est plus utilise.
-4. Publiez les modifications puis rechargez la WebApp.
-5. Sur iPhone, si V3.5 n'apparait pas, supprimez l'ancienne WebApp de l'ecran d'accueil puis reinstallez-la.
+Installation / test local :
+1. Decompresser le package.
+2. Servir le dossier avec un serveur HTTPS ou local, par exemple : python3 -m http.server 8080
+3. Ouvrir http://localhost:8080 dans le navigateur.
+4. Sur iPhone/iPad : ouvrir l'adresse HTTPS dans Safari, puis Partager > Sur l'ecran d'accueil.
 
-Fichiers requis :
-- index.html
-- service-worker.js
-- manifest.webmanifest
-- pdf.min.mjs
-- pdf.worker.min.mjs
-- jszip.min.js
-- dossier icons
+Amelioration V3.6 :
+- confirmation de l'heure reelle avant le demarrage du jeune ;
+- saisie date/heure ;
+- raccourcis Maintenant, -15 min, -30 min, -1 h et -2 h ;
+- recalcul immediat du temps ecoule et de la fin prevue ;
+- protection contre une heure future ;
+- conservation du minuteur, historique, rappels, statistiques, imports et fonctionnement hors ligne.
+
+Les donnees restent stockees localement dans le navigateur.
