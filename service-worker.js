@@ -1,1 +1,11 @@
-const CACHE='body-fasting-v3.5';const APP=['./','./index.html','./manifest.webmanifest','./pdf.min.mjs','./pdf.worker.min.mjs','./jszip.min.js'];self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(APP).catch(()=>null)));self.skipWaiting()});self.addEventListener('activate',e=>e.waitUntil(Promise.all([caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))),self.clients.claim()])));self.addEventListener('fetch',e=>{if(e.request.method==='GET')e.respondWith(fetch(e.request).then(r=>{let q=r.clone();caches.open(CACHE).then(c=>c.put(e.request,q));return r}).catch(()=>caches.match(e.request)))});self.addEventListener('notificationclick',e=>{e.notification.close();e.waitUntil(clients.matchAll({type:'window',includeUncontrolled:true}).then(l=>l[0]?.focus()||clients.openWindow('./index.html')))});self.addEventListener('message',e=>{if(e.data?.type==='APP_READY')e.source?.postMessage({type:'CHECK_TIMER'})});
+const CACHE='body-fasting-v36';
+const APP=['./','./index.html','./manifest.webmanifest','./jszip.min.js','./pdf.min.mjs','./pdf.worker.min.mjs','./icons/icon-192.png','./icons/icon-512.png'];
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{
+  if(event.request.method!=='GET')return;
+  event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{
+    const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));return response;
+  }).catch(()=>event.request.mode==='navigate'?caches.match('./index.html'):undefined)));
+});
+self.addEventListener('message',event=>{if(event.data?.type==='APP_READY')event.source?.postMessage({type:'CHECK_TIMER'})});
